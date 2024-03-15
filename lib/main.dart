@@ -35,9 +35,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider(
-        //   create: (context) => LoginBloc(AuthRemoteDatasource()),
-        // ),
+        BlocProvider(
+          create: (context) => LoginBloc(AuthRemoteDatasource()),
+        ),
         BlocProvider(
           create: (context) => LogoutBloc(AuthRemoteDatasource()),
         ),
@@ -89,30 +89,29 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const DashboardPage()
-        // FutureBuilder<bool>(
-        //     future: AuthLocalDataSource().isAuthDataExists(),
-        //     builder: (context, snapshot) {
-        //       if (snapshot.connectionState == ConnectionState.waiting) {
-        //         return const Scaffold(
-        //           body: Center(
-        //             child: CircularProgressIndicator(),
-        //           ),
-        //         );
-        //       }
-        //       if (snapshot.hasData) {
-        //         if (snapshot.data!) {
-        //           return const DashboardPage();
-        //         } else {
-        //           return const LoginPage();
-        //         }
-        //       }
-        //       return const Scaffold(
-        //         body: Center(
-        //           child: Text('Error'),
-        //         ),
-        //       );
-        //     }),
+        home: FutureBuilder<bool>(
+            future: AuthLocalDataSource().isAuthDataExists(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Scaffold(
+                  body: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              }
+              if (snapshot.hasData) {
+                if (snapshot.data!) {
+                  return const DashboardPage();
+                } else {
+                  return const LoginPage();
+                }
+              }
+              return const Scaffold(
+                body: Center(
+                  child: Text('Error'),
+                ),
+              );
+            }),
       ),
     );
   }
