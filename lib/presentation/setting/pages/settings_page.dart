@@ -110,7 +110,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: IndexedStack(
                   index: currentIndex,
                   children: const [
-                    DiscountPage(),
+                    // DiscountPage(),
                     ManagePrinterPage(),
                     TaxPage(),
                     SyncDataPage(),
