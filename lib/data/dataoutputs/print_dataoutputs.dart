@@ -32,7 +32,7 @@ class PrintDataoutputs {
     final total = totalPrice + pajak;
 
     bytes += generator.reset();
-    bytes += generator.text('RESTO WITH BAHRI',
+    bytes += generator.text('RESTO POS',
         styles: const PosStyles(
           bold: true,
           align: PosAlign.center,
@@ -40,7 +40,7 @@ class PrintDataoutputs {
           width: PosTextSize.size1,
         ));
 
-    bytes += generator.text('Jalan Nanasa No. 1',
+    bytes += generator.text('Jalan ni saja No. 1',
         styles: const PosStyles(bold: true, align: PosAlign.center));
     bytes += generator.text(
         'Date : ${DateFormat('dd/MM/yyyy HH:mm').format(DateTime.now())}',

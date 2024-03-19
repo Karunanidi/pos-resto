@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_posresto_app/presentation/setting/pages/discount_page.dart';
 import 'package:flutter_posresto_app/presentation/setting/pages/manage_printer_page.dart';
-import 'package:flutter_posresto_app/presentation/setting/pages/sync_data_page.dart';
 import 'package:flutter_posresto_app/presentation/setting/pages/tax_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
@@ -113,7 +112,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     // DiscountPage(),
                     ManagePrinterPage(),
                     TaxPage(),
-                    SyncDataPage(),
+                    // SyncDataPage(),
                     // Text('tax'),
                     // ManageDiscount(),
                     // ManagePrinterPage(),
