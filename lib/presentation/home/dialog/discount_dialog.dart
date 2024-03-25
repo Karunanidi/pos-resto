@@ -51,49 +51,49 @@ class _DiscountDialogState extends State<DiscountDialog> {
           ),
         ],
       ),
-      // content:
-      //  BlocBuilder<DiscountBloc, DiscountState>(
-      //   builder: (context, state) {
-      //     return state.maybeWhen(
-      //       orElse: () => const SizedBox.shrink(),
-      //       loading: () => const Center(
-      //         child: CircularProgressIndicator(),
-      //       ),
-      //       loaded: (discounts) {
-      //         return Column(
-      //           crossAxisAlignment: CrossAxisAlignment.start,
-      //           mainAxisSize: MainAxisSize.min,
-      //           children: discounts
-      //               .map(
-      //                 (discount) => ListTile(
-      //                   title: Text('Nama Diskon: ${discount.name}'),
-      //                   subtitle: Text('Potongan harga (${discount.value}%)'),
-      //                   contentPadding: EdgeInsets.zero,
-      //                   textColor: AppColors.primary,
-      //                   trailing: Checkbox(
-      //                     value: discount.id == discountIdSelected,
-      //                     onChanged: (value) {
-      //                       setState(() {
-      //                         discountIdSelected = discount.id!;
-      //                         context.read<CheckoutBloc>().add(
-      //                               CheckoutEvent.addDiscount(
-      //                                 discount,
-      //                               ),
-      //                             );
-      //                       });
-      //                     },
-      //                   ),
-      //                   onTap: () {
-      //                     // context.pop();
-      //                   },
-      //                 ),
-      //               )
-      //               .toList(),
-      //         );
-      //       },
-      //     );
-      //   },
-      // ),
+      content:
+       BlocBuilder<DiscountBloc, DiscountState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            orElse: () => const SizedBox.shrink(),
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            loaded: (discounts) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: discounts
+                    .map(
+                      (discount) => ListTile(
+                        title: Text('Nama Diskon: ${discount.name}'),
+                        subtitle: Text('Potongan harga (${discount.value}%)'),
+                        contentPadding: EdgeInsets.zero,
+                        textColor: AppColors.primary,
+                        trailing: Checkbox(
+                          value: discount.id == discountIdSelected,
+                          onChanged: (value) {
+                            setState(() {
+                              discountIdSelected = discount.id!;
+                              context.read<CheckoutBloc>().add(
+                                    CheckoutEvent.addDiscount(
+                                      discount,
+                                    ),
+                                  );
+                            });
+                          },
+                        ),
+                        onTap: () {
+                          // context.pop();
+                        },
+                      ),
+                    )
+                    .toList(),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

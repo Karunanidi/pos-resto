@@ -292,7 +292,7 @@ class _ConfirmPaymentPageState extends State<ConfirmPaymentPage> {
 
                                 final finalDiscount = discount / 100 * subTotal;
                                 return Text(
-                                  finalDiscount.toInt().currencyFormatRp,
+                                  '$discount % (${finalDiscount.toInt().currencyFormatRp})',
                                   style: TextStyle(
                                     color: AppColors.primary,
                                     fontWeight: FontWeight.w600,
